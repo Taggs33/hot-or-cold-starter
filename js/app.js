@@ -9,6 +9,7 @@ $(document).ready(function(){
 
   	/*--- Hide information modal box ---*/
   	$("a.close").click(function(){
+  		// Fadeout the Overlay 
   		$(".overlay").fadeOut(1000);
   	});
 
