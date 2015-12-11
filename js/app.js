@@ -22,9 +22,21 @@ $(document).ready(function(){
 
   		increaseGuessCount();
 
+      var guessNumber = $('#userGuess').val();
+      displayGuessNumber(guessNumber);
+      calculateTemp(guessNumber);
+
   		clearGuess();	
 
   	});
+
+    $("a.new").click(function(){
+      randomNumber = setRandomNumber();
+      guessCount = -1;
+      increaseGuessCount();
+      resetGuessNumber();
+
+    });    
 
 });
 
@@ -41,9 +53,48 @@ function increaseGuessCount() {
 	$('#count').text(guessCount);
 } 
 
+function displayGuessNumber(guessNumber) {
+  $('#guessList').append('<li>' + guessNumber + '</li>');
+
+}
+
+function resetGuessNumber() {
+  $('#guessList').empty();
+
+}
+
+function calculateTemp(guessNumber) {
+  var feedback = '';
+
+  var difference = Math.abs(guessNumber - randomNumber);
+
+  if (guessNumber == randomNumber) {
+    feedback = 'You are Correct';
+  } else if (difference < 10) {
+    feedback = 'You are on Fire';
+  } else if (difference < 20) {
+    feedback = 'You are Warmer';
+  } else if (difference < 40) {
+    feedback = 'You are Warm';
+  } else if (difference < 50) {
+    feedback = 'You are Cold';
+  } else {
+    feedback = 'You are Freezing'
+  }
+
+  displayFeedback(feedback);
+  console.log(feedback);
+
+}
+
+function displayFeedback(feedback) {
+  $('#feedback').text(feedback);
+}
+
 function clearGuess() {
 	$('#userGuess').val('');
 }
+
 
 // Math.abs( whatever ends up being here becomes positive )
 // difference = users guess - secret numbe
