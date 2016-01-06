@@ -35,6 +35,8 @@ $(document).ready(function(){
       guessCount = -1;
       increaseGuessCount();
       resetGuessNumber();
+      displayFeedback('Make your Guess!');
+      console.log('Make your Guess!');
 
     });    
 
@@ -60,7 +62,6 @@ function displayGuessNumber(guessNumber) {
 
 function resetGuessNumber() {
   $('#guessList').empty();
-
 }
 
 function calculateTemp(guessNumber) {
@@ -94,7 +95,3 @@ function displayFeedback(feedback) {
 function clearGuess() {
 	$('#userGuess').val('');
 }
-
-
-// Math.abs( whatever ends up being here becomes positive )
-// difference = users guess - secret numbe
